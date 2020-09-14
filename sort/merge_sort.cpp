@@ -12,14 +12,14 @@ void PrintArray(int array[], int size)
     cout << endl;
 }
 
-void Merge(int arr[], int i, int m, int j)
+void Merge(int arr[], int start, int middle, int end)
 {
-   int p = i;
-   int q = m+1;
+   int p = start;
+   int q = middle+1;
    int k=0;
-   int temp[j - i + 1];
+   int temp[end - start + 1];
 
-   while (p<=m && q<=j)
+   while (p<=middle && q<=end)
    {
       if (arr[p]<=arr[q])
       {
@@ -31,30 +31,30 @@ void Merge(int arr[], int i, int m, int j)
       }
    }
 
-   while (p<=m)
+   while (p<=middle)
    {
       temp[k++] = arr[p++];
    }
    
-   while (q<=j)
+   while (q<=end)
    {
       temp[k++] = arr[q++];
    }
    
-   for (p = i; p <= j; p++)
+   for (p = start; p <= end; p++)
    {
-      arr[p] = temp[p - i]; 
+      arr[p] = temp[p - start]; 
    }
 }
 
-void MergeSort(int arr[], int i, int j)
+void MergeSort(int arr[], int start, int end)
 {
-   if (i < j)
+   if (start < end)
    {
-      int m = (i + j)/2;
-      MergeSort(arr, i, m);
-      MergeSort(arr, m+1, j);
-      Merge(arr, i, m, j);
+      int middle = (start + end)/2;
+      MergeSort(arr, start, middle);
+      MergeSort(arr, middle+1, end);
+      Merge(arr, start, middle, end);
    }
 }
 
