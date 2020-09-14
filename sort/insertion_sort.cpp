@@ -26,11 +26,11 @@ void InsertionSort(int arr[], int length)
       }
       arr[j+1] = key;
    }
-   printArray(arr, length);
 }
 
 int main()
 {
    int a[12] = {2,5,6,2,4,6,3,4,6,7,1,0};
    InsertionSort(a, 12);
+   PrintArray(a, 12);
 } 
